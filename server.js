@@ -8,7 +8,6 @@ const QRCode = require("qrcode");
 const multer = require("multer");
 const { createWorker } = require("tesseract.js");
 const pdfParse = require("pdf-parse");
-const pdfPoppler = require("pdf-poppler");
 const fs = require("fs");
 const path = require("path");
 const os = require("os");
