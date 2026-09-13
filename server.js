@@ -3,7 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const Credential = require("./Models/credential");
+const Credential = require("./credential");
 const QRCode = require("qrcode");
 const multer = require("multer");
 const { createWorker } = require("tesseract.js");
