@@ -58,9 +58,11 @@ app.post("/credentials", async (req, res) => {
   }
 });
 
+
 // VERIFY CREDENTIAL
 app.get("/verify/:credentialId", async (req, res) => {
   try {
+   
     const credential = await Credential.findOne({
       credentialId: req.params.credentialId
     });
@@ -350,11 +352,14 @@ app.delete("/credentials/:credentialId", async (req, res) => {
 
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Connected!"))
-  .catch((error) =>
-    console.log("MongoDB connection error:", error)
-  );
+  .then(() => {
+    console.log("MongoDB Connected!");
+    console.log("MongoDB readyState:", mongoose.connection.readyState);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.log("MongoDB connection error:", error);
+  });
