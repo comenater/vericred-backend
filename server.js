@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const Credential = require("./credential");
+const authRoutes = require("./routes/auth");
 const QRCode = require("qrcode");
 const multer = require("multer");
 const { createWorker } = require("tesseract.js");
@@ -17,7 +18,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-
+app.use("/api/auth",authRoutes);
 const PORT = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
